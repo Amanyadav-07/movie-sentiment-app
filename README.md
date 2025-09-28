@@ -2,9 +2,8 @@
 
 [**Live Demo 🚀**](https://movie-sentiment-app-1.onrender.com/)
 
-A **Python Flask web app** that predicts the **sentiment** of movie reviews as **Positive 👍**, **Negative 👎**, or **Neutral 😐** using a **pre-trained machine learning model** and **TF-IDF vectorizer**.
+A **Python Flask web app** that predicts the **sentiment** of movie reviews as **Positive 👍**, **Negative 👎** using a **pre-trained machine learning model** and **TF-IDF vectorizer**.
 
-![Movie Sentiment GIF](https://media.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif)
 
 ---
 
