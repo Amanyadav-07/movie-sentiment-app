@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IMDb Sentiment — Predict</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <!-- Your stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- 🎭 Red Curtains -->
+  <div class="curtain"></div>
+  <div class="curtain right"></div>
+
+  <!-- ✨ Twinkling Stars -->
+  <div class="star" style="top:10%; left:20%;"></div>
+  <div class="star" style="top:30%; left:70%;"></div>
+  <div class="star" style="top:50%; left:40%;"></div>
+  <div class="star" style="top:75%; left:80%;"></div>
+
+  <main class="app">
+    <div class="card" data-aos="fade-up">
+      <header class="card-header">
+        <div class="logo">
+          <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_j1adxtyb.json"
+                         background="transparent" speed="1"
+                         style="width:70px;height:70px;" loop autoplay></lottie-player>
+        </div>
+        <div>
+          <h1>IMDb Sentiment Analyzer</h1>
+          <p class="muted">Paste a movie review and get instant sentiment prediction</p>
+        </div>
+      </header>
+
+      <form id="predict-form" class="form">
+        <textarea id="review-text" name="review" placeholder="Type or paste a movie review..." required></textarea>
+
+        <div class="controls">
+          <button id="predict-btn" class="btn primary" type="submit">Predict Sentiment</button>
+          <button id="sample-btn" class="btn ghost" type="button">Try sample</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="result-area hidden">
+        <div id="loader" class="loader hidden" aria-hidden="true"></div>
+        <div id="result-card" class="result-card animate__animated" aria-live="polite"></div>
+      </div>
+
+      <p class="note">Tip: Try short reviews like "Amazing performance" or "Utterly boring".</p>
+
+      <footer class="card-footer">
+        <small>Model: <strong>Saved TF-IDF + classifier</strong></small>
+      </footer>
+    </div>
+  </main>
+
+  <!-- AOS Init -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script> AOS.init({duration:600, once:true}); </script>
+
+  <!-- Script -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
