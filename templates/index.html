@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>IMDb Sentiment — Predict</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+
+  <!-- 🎭 Red Curtains -->
+  <div class="curtain"></div>
+  <div class="curtain right"></div>
+
+  <!-- ✨ Spotlight Background -->
+  <div class="spotlight"></div>
+
+  <!-- ✨ Floating sparkles -->
+  <div class="sparkle" style="top:20%; left:15%;"></div>
+  <div class="sparkle" style="top:40%; left:70%;"></div>
+  <div class="sparkle" style="top:65%; left:30%;"></div>
+  <div class="sparkle" style="top:80%; left:80%;"></div>
+
+  <!-- Main App Card -->
+  <main class="app">
+    <div class="card" data-aos="fade-up">
+      <header class="card-header">
+        <div class="logo">
+          <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_j1adxtyb.json"
+                         background="transparent" speed="1"
+                         style="width:70px;height:70px;" loop autoplay></lottie-player>
+        </div>
+        <div>
+          <h1>IMDb Sentiment Analyzer</h1>
+          <!-- Typing Effect Tagline -->
+          <p id="typing-text" class="muted"></p>
+        </div>
+      </header>
+
+      <form id="predict-form" class="form">
+        <textarea id="review-text" name="review" placeholder="Type or paste a movie review..." required></textarea>
+
+        <div class="controls">
+          <button id="predict-btn" class="btn primary" type="submit">Predict Sentiment</button>
+          <button id="sample-btn" class="btn ghost" type="button">Try sample</button>
+        </div>
+      </form>
+
+      <div id="result-area" class="result-area hidden">
+        <div id="loader" class="loader hidden" aria-hidden="true"></div>
+        <div id="result-card" class="result-card animate__animated" aria-live="polite"></div>
+      </div>
+
+      <p class="note">Tip: Try short reviews like "Amazing performance" or "Utterly boring".</p>
+
+      <footer class="card-footer">
+        <small>Model: <strong>Saved TF-IDF + classifier</strong></small>
+      </footer>
+    </div>
+    <!-- Floating Orbs Background -->
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </main>
+
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script> AOS.init({duration:600, once:true}); </script>
+
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <!-- Script -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  <!-- Typing Effect Script -->
+  <script>
+    const text = "Analyzing your reviews in real-time...";
+    let i = 0;
+    function typingEffect() {
+      if (i < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typingEffect, 50);
+      }
+    }
+    typingEffect();
+  </script>
+</body>
+</html>
